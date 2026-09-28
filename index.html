@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Tienda</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: #243b53;
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .producto {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 8px #00000015;
+    }
+
+    .foto {
+      font-size: 70px;
+      margin: 10px;
+    }
+
+    button {
+      background: #168a64;
+      color: white;
+      border: 0;
+      padding: 11px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #106c4e;
+    }
+
+    #carrito {
+      margin-top: 28px;
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mi Tienda</h1>
+    <p>¡Encuentra tus productos favoritos!</p>
+  </header>
+
+  <main>
+    <h2>Productos</h2>
+
+    <section class="productos">
+      <article class="producto">
+        <div class="foto">👕</div>
+        <h3>Playera</h3>
+        <p>$15.00</p>
+        <button onclick="agregar('Playera', 15)">Agregar al carrito</button>
+      </article>
+
+      <article class="producto">
+        <div class="foto">🎒</div>
+        <h3>Mochila</h3>
+        <p>$30.00</p>
+        <button onclick="agregar('Mochila', 30)">Agregar al carrito</button>
+      </article>
+
+      <article class="producto">
+        <div class="foto">🧢</div>
+        <h3>Gorra</h3>
+        <p>$12.00</p>
+        <button onclick="agregar('Gorra', 12)">Agregar al carrito</button>
+      </article>
+    </section>
+
+    <section id="carrito">
+      <h2>Carrito</h2>
+      <ul id="lista"></ul>
+      <p>Total: $<span id="total">0.00</span></p>
+    </section>
+  </main>
+
+  <script>
+    let total = 0;
+
+    function agregar(nombre, precio) {
+      const producto = document.createElement("li");
+      producto.textContent = `${nombre} — $${precio.toFixed(2)}`;
+      document.getElementById("lista").appendChild(producto);
+
+      total += precio;
+      document.getElementById("total").textContent = total.toFixed(2);
+    }
+  </script>
+</body>
+</html>
